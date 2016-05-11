@@ -528,6 +528,16 @@ int usbi_device_cache_descriptor(libusb_device *dev)
 	return LIBUSB_SUCCESS;
 }
 
+int API_EXPORTED libusb_get_device_instand_id(libusb_device *dev, char* *uuid)
+{
+	if (dev == 0)
+		return -2;
+
+	memcpy(*uuid,dev->devInst,128);
+
+	return 0;
+}
+
 /** \ingroup libusb_desc
  * Get the USB device descriptor for a given device.
  *

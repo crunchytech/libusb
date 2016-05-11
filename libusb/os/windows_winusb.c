@@ -1045,6 +1045,7 @@ static int init_device(struct libusb_device *dev, struct libusb_device *parent_d
 	priv->depth = parent_priv->depth + 1;
 	priv->parent_dev = parent_dev;
 	dev->parent_dev = parent_dev;
+	memcpy(dev->devInst , device_id,sizeof(dev->devInst));
 
 	// If the device address is already set, we can stop here
 	if (dev->device_address != 0)
@@ -1727,6 +1728,8 @@ static int windows_get_config_descriptor_by_value(struct libusb_device *dev, uin
 		return LIBUSB_ERROR_NOT_FOUND;
 
 	for (index = 0; index < dev->num_configurations; index++) {
+		if (priv->config_descriptor[index] == NULL)
+			return LIBUSB_ERROR_NOT_FOUND;
 		config_header = (PUSB_CONFIGURATION_DESCRIPTOR)priv->config_descriptor[index];
 		if (config_header->bConfigurationValue == bConfigurationValue) {
 			*buffer = priv->config_descriptor[index];

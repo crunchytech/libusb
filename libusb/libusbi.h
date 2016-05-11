@@ -377,6 +377,7 @@ struct libusb_device {
 
 	struct list_head list;
 	unsigned long session_data;
+	char devInst[128];
 
 	struct libusb_device_descriptor device_descriptor;
 	int attached;

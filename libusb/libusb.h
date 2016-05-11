@@ -1318,6 +1318,7 @@ void LIBUSB_CALL libusb_unref_device(libusb_device *dev);
 
 int LIBUSB_CALL libusb_get_configuration(libusb_device_handle *dev,
 	int *config);
+int LIBUSB_CALL libusb_get_device_instand_id(libusb_device *dev, unsigned long *uuid);
 int LIBUSB_CALL libusb_get_device_descriptor(libusb_device *dev,
 	struct libusb_device_descriptor *desc);
 int LIBUSB_CALL libusb_get_active_config_descriptor(libusb_device *dev,

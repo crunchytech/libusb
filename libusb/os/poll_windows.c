@@ -595,7 +595,7 @@ int usbi_poll(struct pollfd *fds, unsigned int nfds, int timeout)
 			poll_dbg("starting %d ms wait for %u handles...", timeout, (unsigned int)nb_handles_to_wait_on);
 		}
 		ret = WaitForMultipleObjects(nb_handles_to_wait_on, handles_to_wait_on,
-			FALSE, (timeout<0)?INFINITE:(DWORD)timeout);
+			FALSE, (timeout<0)?	INFINITE:(DWORD)timeout);
 		object_index = ret-WAIT_OBJECT_0;
 		if ((object_index >= 0) && ((DWORD)object_index < nb_handles_to_wait_on)) {
 			poll_dbg("  completed after wait");
